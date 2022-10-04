@@ -39,7 +39,7 @@ class Laser:
         self.y += vel
 
     def off_screen(self, height):
-        return not(self.y <= height and self.y >= 0)
+        return self.y > height or self.y < 0
 
     def collision(self, obj):
         return collide(self, obj)
@@ -204,7 +204,7 @@ def main():
             else:
                 continue
 
-        if len(enemies) == 0:
+        if not enemies:
             level += 1
             wave_length += 5
             for i in range(wave_length):
